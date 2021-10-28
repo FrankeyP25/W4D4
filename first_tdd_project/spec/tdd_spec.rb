@@ -14,3 +14,11 @@ describe "my_uniq" do
     expect(unique_array).to_not be(array)
   end
 end
+
+describe "two_sum" do 
+    let(:arr) { [-1, 0, 2, -2, 1] }
+    it "find all position pairs in dictionary order which the sum will be == to 0" do
+        expect(arr).to eq([[0, 4], [2, 3]])
+    end
+
+end
