@@ -3,3 +3,7 @@
 
 # [1, 2, 1, 3, 3].uniq # => [1, 2, 3]
 # Write your own version of this method called my_uniq; it should take in an Array and return a new array.
+
+def my_uniq(arr)
+    arr.uniq
+end
