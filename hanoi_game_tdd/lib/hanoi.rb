@@ -16,8 +16,8 @@ class Hanoi
     attr_accessor :board
 
     def initialize
-        @board = Array.new(3) {Array.new}
-        populate
+        @board = [[3, 2 ,1],[],[]]
+        # populate
     end
 
     def [](stack)
@@ -28,13 +28,29 @@ class Hanoi
         @board[stack] = value
     end
 
-    def populate
-        @board[0].push(3, 2, 1)
+    # def populate
+    #     @board[0].push(3, 2, 1)
+    # end
+
+    # def move(stack, new_stack)
+        # ele = @board[stack].pop
+        # @board[new_stack] << ele
+    # end
+    
+    def move
+        if win?
+            puts "you have won"
+        else
+            puts "starting position and end position ex: '1,2'"
+            pos = gets.chomp.split(",").map(&:to_i) #=? [1],[2]
+            i1 , i2 = pos 
+            ele = @board[i1].pop
+            @board[i2] << ele
+        end 
     end
 
-    def move(stack, new_stack)
-        ele = @board[stack].pop
-        @board[new_stack] << ele
+    def win?
+        @board.any? { |stack| (stack.length == 3 && stack == stack.sort.reverse) && @board[stack] != 0}
     end
 
     
