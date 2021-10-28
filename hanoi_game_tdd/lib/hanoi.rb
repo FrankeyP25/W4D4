@@ -13,5 +13,29 @@
 # #won?
 
 class Hanoi
+    attr_accessor :board
 
+    def initialize
+        @board = Array.new(3) {Array.new}
+        populate
+    end
+
+    def [](stack)
+        @board[stack]
+    end
+
+    def []=(stack, value)
+        @board[stack] = value
+    end
+
+    def populate
+        @board[0].push(3, 2, 1)
+    end
+
+    def move(stack, new_stack)
+        ele = @board[stack].pop
+        @board[new_stack] << ele
+    end
+
+    
 end
