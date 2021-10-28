@@ -27,30 +27,25 @@ class Hanoi
     def []=(stack, value)
         @board[stack] = value
     end
-
-    # def populate
-    #     @board[0].push(3, 2, 1)
-    # end
-
-    # def move(stack, new_stack)
-        # ele = @board[stack].pop
-        # @board[new_stack] << ele
-    # end
     
     def move
+        loop do 
         if win?
             puts "you have won"
+            break
         else
-            puts "starting position and end position ex: '1,2'"
-            pos = gets.chomp.split(",").map(&:to_i) #=? [1],[2]
+            puts "starting position and end position ex: '1 2'"
+            pos = gets.chomp.split(" ").map(&:to_i) #=? [1],[2]
             i1 , i2 = pos 
             ele = @board[i1].pop
             @board[i2] << ele
+            p @board
         end 
+        end
     end
 
     def win?
-        @board.any? { |stack| (stack.length == 3 && stack == stack.sort.reverse) && @board[stack] != 0}
+        @board.any? { |stack| (stack.length == 3 && stack == stack.sort.reverse) && @board.index(stack) != 0}
     end
 
     
